@@ -566,6 +566,10 @@ small {
   background-color: #1a3b6b !important;
 } */
 
+#map {
+  margin-bottom: 60px;
+}
+
 @media (min-width: 1200px) {
   #experience .container {
     width: 860px;
@@ -691,4 +695,5 @@ small {
   #intro.section {
     background-position-x: 30%;
   }
+  
 }
