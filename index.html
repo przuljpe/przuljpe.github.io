@@ -317,7 +317,8 @@
     <!-- Fourth Section: Projects -->
     <section id="projects" class="section scrollspy">
       <h3 class="page-title white-text teal">Projects</h3>
-      <div class="container">
+
+      <div class="container" hidden>
         <div class="row">
           
           <div class="col s12 m6 l4">
@@ -342,8 +343,8 @@
                   <li><b>Tools:</b> Python, PyGame</li>
                   <li>10 Different unique games</li>
                   <li>High scores are saved locally</li>
-
                 </ul>
+                <p>Date: 2024-03-01</p>
                 <div class="card-action">
                   <a aria-label="Visit the GitHub repo for  project" href="https://github.com/przuljpe/"
                     target="_blank" data-position="top" data-tooltip="View Source"
@@ -378,6 +379,7 @@
                   <li>To draft a set, the unique set code can be input to draft that set</li>
                   <li>After drafting, user can copy deck list, evaluate deck or start a new draft</li>
                 </ul>
+                <p>Date: 2024-01-01</p>
                 <div class="card-action">
                   <a aria-label="Visit the GitHub repo for  project" href="https://github.com/przuljpe/"
                     target="_blank" data-position="top" data-tooltip="View Source"
@@ -411,6 +413,7 @@
                   <li>Applied k-means clustering to create custom classifications based on the density of Street View locations</li>
                   <li>Used a convolutional neural network with residuals to classify Street View images to a cluster with a 7x greater accuracy than random guessing</li>
                 </ul>
+                <p>Date: 2023-03-01</p>
                 <div class="card-action">
                   <a aria-label="Visit the GitHub repo for project" href="https://github.com/przuljpe/"
                     target="_blank" data-position="top" data-tooltip="View Source"
@@ -439,17 +442,59 @@
                 <span class="card-title grey-text"><small>Accomplishments</small><i
                     class="mdi-navigation-close right"></i></span>
                 <ul>
-                  <li><b>Tools:</b>Python, CAD, Microcontrollers, Motors</li>
+                  <li><b>Tools:</b> Python, CAD, Microcontrollers, Motors</li>
                   <li>Contacted a stakeholder in Ghana to create and research a method of recycling PET bottles for construction use</li>
                   <li>Long thin strips of PET bottles and weaved together using motor system to create a strong rope for use in construction using either an automated machine or a hand crank</li>
-
                 </ul>
+                <p>Date: 2022-08-01</p>
               </div>
             </div>
           </div>
           <!-- ************* -->
         </div>
       </div>
+
+      <div class="container">
+        <div class="row">
+          <div id="recentproj">
+            
+          </div>
+        </div>
+        <button id="loadbutton" onclick="loadNext()">Load More</button>
+      </div>
+      
+
+      <script async>
+        let projs = document.getElementsByClassName("col s12 m6 l4");
+        let proj_arr = [...projs];
+        let dates = [];
+        for (let i = 0; i < proj_arr.length; i++){
+          let date = proj_arr[i].getElementsByTagName("p")[1].textContent;
+          date = date.split(" ")[1];
+          dates[i] = new Date(date).getTime();
+        }
+        let recent_proj_idx = dates.indexOf(Math.min(...dates));
+        let recent_proj = proj_arr.splice(recent_proj_idx, 1);
+        dates.splice(recent_proj_idx, 1);
+
+        loadNext()
+
+        function loadNext(){
+          alert(recent_proj_idx)
+          let element = document.getElementById("recentproj");
+          element.appendChild(recent_proj[0]);
+
+          if (!proj_arr.length){
+            document.getElementById("loadbutton").remove();
+          }
+
+          recent_proj_idx = dates.indexOf(Math.min(...dates));
+          recent_proj = proj_arr.splice(recent_proj_idx, 1);
+          dates.splice(recent_proj_idx, 1);
+        
+        }
+      </script>
+
     </section>
 
     <!-- Fifth Section: Skills -->
