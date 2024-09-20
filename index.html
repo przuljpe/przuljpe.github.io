@@ -473,7 +473,7 @@
           date = date.split(" ")[1];
           dates[i] = new Date(date).getTime();
         }
-        let recent_proj_idx = dates.indexOf(Math.min(...dates));
+        let recent_proj_idx = dates.indexOf(Math.max(...dates));
         let recent_proj = proj_arr.splice(recent_proj_idx, 1);
         dates.splice(recent_proj_idx, 1);
 
@@ -487,7 +487,7 @@
             document.getElementById("loadbutton").remove();
           }
 
-          recent_proj_idx = dates.indexOf(Math.min(...dates));
+          recent_proj_idx = dates.indexOf(Math.max(...dates));
           recent_proj = proj_arr.splice(recent_proj_idx, 1);
           dates.splice(recent_proj_idx, 1);
         
